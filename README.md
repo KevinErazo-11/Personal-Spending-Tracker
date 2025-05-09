@@ -27,19 +27,15 @@ Make sure you have the g++ compiler installed and that it is in your PATH variab
 ## How to execute
 From the terminal, run the generated file:
 ```bash
-./PersonalFinanceManager.exe
-```
-or in Windows:
-```bash
-PersonalFinanceManager.exe
+.\PersonalFinanceManager.exe
 ```
 
 ## CSV file format
 Transactions are saved in the file in the following format:
-- Type, Amount, Date, Category, Description
+- Type, Amount, Date, Category, Description.
 Example:
-INCOME,1000.0,2025-05-06,Salary,Monthly Salary
-EXPENSE,50.0,2025-05-07, Meal, Lunch
+- INCOME,1000.0,2025-05-06,Salary,Monthly Salary
+- EXPENSE,50.0,2025-05-07, Meal, Lunch
 
 ## 🧑‍💻 Author
 Kevin Erazo
