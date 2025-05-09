@@ -31,13 +31,13 @@ From the terminal, run the generated file:
 ```
 
 ## CSV file format
-Transactions are saved in the file in the following format: 
-Type, Amount, Date, Category, Description.
-Example:
+Transactions are saved in the file in the following format:   
+Type, Amount, Date, Category, Description.  
+Example:  
 - INCOME,1000.0,2025-05-06,Salary,Monthly Salary
 - EXPENSE,50.0,2025-05-07, Meal, Lunch
 
 ## 🧑‍💻 Author
-Kevin Erazo
-Project for the Advanced Programming course
+Kevin Erazo  
+Project for the Advanced Programming course  
 Yachay Tech University - 2025
