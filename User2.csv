@@ -1,0 +1,4 @@
+type,amount,date,category,description
+0,30.000000,2025-05-20,Clothing,Jacket
+0,60.000000,2025-05-20,Food,Feeding
+1,10.000000,2025-05-25,Food,Lunch

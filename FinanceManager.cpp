@@ -39,6 +39,23 @@ double FinanceManager::calculateBalance() const {
     return balance;
 }
 
+std::vector<double> FinanceManager::getBalanceOverTime() const {
+    std::vector<double> balances;
+    double balance = 0.0;
+
+    for (const auto& transaction : transactions) {
+        if (transaction.getType() == INCOME) {
+            balance += transaction.getAmount();
+        } else {
+            balance -= transaction.getAmount();
+        }
+        balances.push_back(balance);
+    }
+
+    return balances;
+
+}
+
 void FinanceManager::showExpensesByCategory() const {
     std::map<std::string, double> categoryTotals;
 
@@ -109,3 +126,43 @@ void FinanceManager::loadFromFile(const std::string& file) {
     std::cout << "Transactions loaded from file.\n";
     inFile.close();  
 }
+
+
+void FinanceManager::saveTransactionsToFile(const std::string& filename) const {
+    std::ofstream file(filename);
+    if (!file) {
+        std::cerr << "Error opening file for writing: " << filename << std::endl;
+        return;
+    }
+
+    file << "type,amount,date,category,description\n";
+    for (const auto& t : transactions) {
+        file << t.toCSV() << "\n";
+    }
+    file.close();
+}
+
+
+void FinanceManager::loadTransactionsFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file) {
+        std::cerr << "Error opening file for reading: " << filename << std::endl;
+        return;
+    }
+    transactions.clear();
+
+    std::string line;
+    
+    if (std::getline(file, line)) {
+        if (line.find("type") == std::string::npos) {
+            transactions.push_back(Transaction::fromCSV(line));
+        }
+    }
+
+    while (std::getline(file, line)) {
+        if (line.empty()) continue;
+        transactions.push_back(Transaction::fromCSV(line));
+    }
+    file.close();
+}
+

@@ -8,6 +8,7 @@ class FinanceManager {
     
     public:
         FinanceManager();
+        std::vector<double> getBalanceOverTime() const;
         void addTransaction(const Transaction& t);
         void showHistory() const;
         double calculateBalance() const;
@@ -16,6 +17,9 @@ class FinanceManager {
     
         void saveToFile(const std::string& file) const;
         void loadFromFile(const std::string& file);
+        void saveTransactionsToFile(const std::string& filename) const;
+        void loadTransactionsFromFile(const std::string& filename);
+
 };
 
 
