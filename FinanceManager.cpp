@@ -3,6 +3,9 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <thread>
+#include <chrono>
+#include <iomanip>    
 
 FinanceManager::FinanceManager() {
     
@@ -142,6 +145,33 @@ void FinanceManager::saveTransactionsToFile(const std::string& filename) const {
     file.close();
 }
 
+<<<<<<< HEAD
+=======
+void printProgressBar(size_t progress, size_t total) {
+    const int barWidth = 50;
+    float ratio = static_cast<float>(progress) / total;
+    int pos = static_cast<int>(barWidth * ratio);
+    const char animation[] = "|/-\\";
+    char animChar = animation[progress % 4];
+
+    const std::string reset = "\033[0m";
+
+    std::cout << "[";  
+    for (int i = 0; i < barWidth; ++i) {
+        if (i < pos)
+            std::cout << "=";
+        else if (i == pos)
+            std::cout << animChar;
+        else
+            std::cout << " ";
+    }
+    std::cout << "] " << std::setw(3) << int(ratio * 100.0) << "%\r" << reset;
+    std::cout.flush();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(15));
+}
+
+>>>>>>> a77ca22 (Update)
 
 void FinanceManager::loadTransactionsFromFile(const std::string& filename) {
     std::ifstream file(filename);
@@ -151,18 +181,47 @@ void FinanceManager::loadTransactionsFromFile(const std::string& filename) {
     }
     transactions.clear();
 
+<<<<<<< HEAD
     std::string line;
     
     if (std::getline(file, line)) {
         if (line.find("type") == std::string::npos) {
             transactions.push_back(Transaction::fromCSV(line));
+=======
+    std::vector<std::string> lines;
+    std::string line;
+
+    
+    if (std::getline(file, line)) {
+        if (line.find("type") != std::string::npos) {
+            
+        } else {
+            lines.push_back(line);
+>>>>>>> a77ca22 (Update)
         }
     }
 
     while (std::getline(file, line)) {
+<<<<<<< HEAD
         if (line.empty()) continue;
         transactions.push_back(Transaction::fromCSV(line));
     }
     file.close();
 }
 
+=======
+        if (!line.empty()) {
+            lines.push_back(line);
+        }
+    }
+    file.close();
+
+    size_t total = lines.size();
+    for (size_t i = 0; i < total; ++i) {
+        transactions.push_back(Transaction::fromCSV(lines[i]));
+        printProgressBar(i + 1, total);
+    }
+
+    std::cout << "\nLoaded " << total << " transactions from file.\n";
+}
+>>>>>>> a77ca22 (Update)

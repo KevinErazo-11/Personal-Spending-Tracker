@@ -1,0 +1,5 @@
+type,amount,date,category,description
+0,20.000000,2025-05-01,Food,Weekly meal
+1,6.000000,2025-05-25,Food,Lunches
+0,40.000000,2025-05-23,Clothing,
+1,30.000000,2025-05-26,Clothing,Buying a jacket

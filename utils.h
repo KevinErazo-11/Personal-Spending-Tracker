@@ -43,5 +43,8 @@ double getValidatedDouble(double min, double max) {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a77ca22 (Update)
 #endif
